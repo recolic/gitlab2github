@@ -3,7 +3,11 @@
 set gitlab_host https://git.recolic.net
 # set gitlab_namespace_src users/root groups/recolic-hust
 set gitlab_namespace_src users/root
-set github_user_dst "rtestgithubapi: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"
+if test "$github_user_dst" = ""
+    echo 'Error: please set environment variable github_user_dst' 1>&2
+    echo 'Example: env github_user_dst="rtestgithubapi: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" ./gitlab2gitlab.fish'
+    exit 1
+end
 
 function echo2
     echo $argv 1>&2
