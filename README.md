@@ -12,7 +12,7 @@ This doesn't recursively resolve gitlab sub-group. Please specify every sub-grou
 
 ```
 sudo docker build -f Dockerfile -t recolic/gitlab2github .
-sudo docker run -d --name rgitsync --env github_user_dst="rtestgithubapi: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" recolic/gitlab2github
+sudo docker run -d --restart=always --name rgitsync --env github_user_dst="rtestgithubapi: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" recolic/gitlab2github
 ```
 
 
