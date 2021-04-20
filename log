@@ -1,8 +1,0 @@
-curl https://git.recolic.net/api/v4/users/root/projects
-
-
-curl -u "rtestgithubapi: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" --data '{"name":"NEW_REPO_NAME"}' https://api.github.com/user/repos
-curl -u "rtestgithubapi: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" --request PATCH --data '{"name":"NEW_REPO_NAME", "description":"a new description"}' https://api.github.com/repos/rtestgithubapi/NEW_REPO_NAME
-
-
-
