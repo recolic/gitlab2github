@@ -13,6 +13,15 @@ function echo2
     echo $argv 1>&2
 end
 
+function assert_this_repo_allows_sync
+    # We can use `echo sync=0 > .gitlab2github.conf` to disable the sync
+    # Return 0 if ok to sync, return 1 if sync is disabled. 
+    grep 'sync=0' .gitlab2github.conf > /dev/null 2>&1
+    and echo2 "Disable sync for repo "(pwd)
+    and return 1
+    or return 0
+end
+
 function sync_one_project
     set project_name $argv[1]
     set project_url $argv[2]
@@ -46,6 +55,7 @@ function sync_one_project
         # https://stackoverflow.com/questions/67054889/force-git-pull-to-resolve-divergent-by-discard-all-local-commits
         and git fetch
         and git reset --hard "@{upstream}"
+        and assert_this_repo_allows_sync
         and git push --tags --force dst (git branch --show-current)
         and cd ..
         or return 4
