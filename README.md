@@ -15,4 +15,7 @@ sudo docker build -f Dockerfile -t recolic/gitlab2github .
 sudo docker run -d --restart=always --name rgitsync --env github_user_dst="rtestgithubapi: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" recolic/gitlab2github
 ```
 
+## Disable sync for specific repo
+
+run `echo sync=0 > .gitlab2github.conf` in the master or default branch, and push it. 
 
