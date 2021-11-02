@@ -4,6 +4,9 @@ maintainer root@recolic.net
 run apt update && apt install -y fish wget curl git
 run wget https://git.recolic.net/root/json2table/uploads/63b923b53a191968f0dc29cd988d7b4f/json2table-linux-static -O /usr/bin/json2table && chmod +x /usr/bin/json2table
 
+# I don't know why CAFile is none in long-running docker. Just disable it. 
+run git config --global http.sslVerify false
+
 run mkdir -p /app
 copy . /app
 workdir /app
