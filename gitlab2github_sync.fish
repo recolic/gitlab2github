@@ -74,7 +74,9 @@ function do_namespace_copy
     end
 end
 
+set workdir (pwd)
 for ns in $gitlab_namespace_src
+    cd $workdir
     do_namespace_copy $ns
 end
 
